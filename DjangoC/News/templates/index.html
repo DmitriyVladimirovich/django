@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+<h1>{{title}}</h1>
+
+{%for i in news%}
+    <div>
+        <p>{{i.title}}</p>
+        <p>{{i.content}}</p>
+        <p>{{i.created_at|date:'Y-m-d H:i'}}</p>
+    </div>
+    <hr>
+{%endfor%}
+<hr color="red">
+
+<h1>{{htitle}}</h1>
+{%for i in human%}
+    <div>
+        <p>{{i.fname}} {{i.lname}} - {{i.hage}} год\года\лет</p>
+        <p>Паспорт: {{i.passp}}</p>
+    </div>
+    <hr>
+{%endfor%}
+
+</body>
+</html>
