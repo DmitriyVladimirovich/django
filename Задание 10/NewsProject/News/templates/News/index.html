@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+
+
+{%block template%}
+  {{title}} :: {{block.super}}
+{%endblock%}
+
+{%block sidebar%}
+  {%include 'inc/_sidebar.html'%}
+{%endblock%}
+
+{%block content%}
+
+          {%for i in news%}
+            <div class="card mt-3">
+              <div class="card-header">
+                Категория: <a href="{%url 'Category' i.categ.pk%}">{{i.categ}}</a>
+              </div>
+              <div class="media"  style="display:flex">
+                <div class="media-photo">
+                  {%if i.photo%}
+                    <img src="{{i.photo.url}}" class="mr-3" width="350" alt="Фото">
+                  {%else%}
+                    <h6>Фото нет</h6>
+                  {%endif%}
+                </div>
+                <div class="media-body">
+                  <div class="card-body">
+                  <h5 class="card-title">{{i.title}}</h5>
+                  <p class="card-text">{{i.content|truncatewords:60|linebreaks}}</p>
+                  <a href="#" class="btn btn-primary">Read more...</a>
+                </div>
+                <div class="card-footer text-body-secondary">
+                  {{i.created_at}}
+                </div>
+                </div>
+              </div>
+            </div>
+          {%endfor%}
+
+{%endblock%}
