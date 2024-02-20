@@ -1,0 +1,32 @@
+{%extends 'hbase.html'%}
+
+{%block template%}
+  {{prof.title}} :: {{block.super}}
+{%endblock%}
+
+{%block sidebar%}
+  {%include 'inc/_hsidebar.html'%}
+{%endblock%}
+
+{%block content%}
+    {%for i in human%}
+      <div class="card text-center">
+        <div class="card-header {% cycle 'text-primary' 'text-warning' %}">
+          {{i.profs}}
+        </div>
+        <div class="card-body" slyle="display:flex">
+          <div class="card-title">{{i.fname}} {{i.lname}}</div>
+          <div class="card-text">Возраст: {{i.hage}}. Паспорт: {{i.passp}}
+          {% if i.hage %}
+            <a href="#" class="btn btn-primary">Далее...</a>
+          {%else%}
+            Маловат еще для кнопки
+          {%endif%}
+          </div>
+        </div>
+        <div class="card-footer text-body-secondary">
+          Дополнительный текст
+        </div>
+      </div>
+    {%endfor%}
+{%endblock%}

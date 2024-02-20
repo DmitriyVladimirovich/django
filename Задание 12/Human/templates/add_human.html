@@ -1,0 +1,19 @@
+{%extends 'hbase.html'%}
+
+{%block template%}
+  Добавить персонажа :: {{block.super}}
+{%endblock%}
+
+{%block sidebar%}
+  {%include 'inc/_hsidebar.html'%}
+{%endblock%}
+
+{%block content%}
+  <h1>Добавление нового человека</h1>
+  <form action="{% url 'Add_human'%}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary btn-block">Добавить человека</button>
+    {{ form.none_field.errors}}
+  </form>
+{%endblock%}
