@@ -1,0 +1,25 @@
+{%extends 'hbase.html'%}
+
+{%block template%}
+  {{title}} :: {{block.super}}
+{%endblock%}
+
+{%block sidebar%}
+  {%include 'inc/_hsidebar.html'%}
+{%endblock%}
+
+{%block content%}
+      <div class="card text-center">
+        <div class="card-header {% cycle 'text-primary' 'text-warning' %}">
+            <a href="{{ human_item.profs.get_absolute_url }}">{{human_item.profs}}</a>
+        </div>
+        <div class="card-body" slyle="display:flex">
+          <div class="card-title">{{human_item.fname}} {{human_item.lname}}</div>
+          <div class="card-text">Возраст: {{human_item.hage}}. Паспорт: {{human_item.passp}}
+          </div>
+        </div>
+        <div class="card-footer text-body-secondary">
+          2 days ago
+        </div>
+      </div>
+{%endblock%}
